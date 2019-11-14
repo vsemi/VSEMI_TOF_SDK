@@ -13,10 +13,15 @@ Introduction
 Sample applications:
 
 -sample1:                   work with raw data with minimum_dependency
+
 -sample2:                   work with depth map and point cloud in ROS environment
+
 -sample3:                   work with depth map and point cloud using OpenCV and PCL
+
 -sample4:                   work with depth map, point cloud and RGB camera in ROS environment
+
 -sample5:                   work with depth map, point cloud and RGB camera using OpenCV and PCL
+
 -sample6:                   work with depth map with OpenCV
    
    
