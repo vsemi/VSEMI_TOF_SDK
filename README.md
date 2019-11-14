@@ -24,4 +24,4 @@ Sample applications:
 
 -sample6:                   work with depth map with OpenCV
    
-   
+To be started, please read instructions in docs folder to build and run the sample applications.
