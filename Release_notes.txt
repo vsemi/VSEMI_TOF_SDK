@@ -1,0 +1,17 @@
+VSEMI TOF SDK 1.3.2
+Nov 11, 2019
+
+What's new:
+
+. HDR: Spatial and Temporal HDR supported. HDR Temporal supports up to 4 integration times.
+
+. Saturated points: can be turned on or off in image output, and a saturated indices and mask provided.
+
+. More sample applications provided, including work with raw data with minimum dependency requirement.
+
+. Removed OpenCV and PCL from the driver, and therefore there is no dependency requirement of OpenCV and PCL for driver itself.
+
+Bug fixes:
+
+. Fixed memory leak issue found in 1.3.1;
+

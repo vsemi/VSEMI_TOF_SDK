@@ -1,0 +1,37 @@
+The sample 5, to work with OpenCV and PCL to show depth map and point cloud obtained from ToF sensor, and RGB color image from RGB camera, use this sample only if you have Vsemi ToF-Plus sensor, which with RGB camera. 
+
+The sample which requires ROS Kinetic as dependency.
+
+Prerequisites:
+
+  x64
+  ubuntu 16.04
+  ROS Kinetic + OpenCV or PCL + OpenCV
+
+Before you start
+
+  If you already have dependencies installed for Sample3 (Sample_3_OpenCV_PCL_depth_map_and_point_cloud.txt), go to next step "Build and run the sample application", otherwise, refer to Sample_3_OpenCV_PCL_depth_map_and_point_cloud.txt to install dependencies required before go to next step "Build and run the sample application".
+    
+Build and run the sample application
+
+1. Plug in the sensor, and set USB permission:
+
+  >> sudo chmod a+rw /dev/ttyACM0
+
+2. Extract VSEMI_TOF_SDK archive into /home directory, there should be: ~/VSEMI_TOF_SDK
+
+3. Build sample desktop application:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample5/build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+
+  >> make
+
+4. To start the sample desktop application, run command:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample5/build
+
+  >> ./vsemi_tof_cam
+
+5. To stop the application, press Esc key when the depth map window active, or use mouse to close the point cloud window.

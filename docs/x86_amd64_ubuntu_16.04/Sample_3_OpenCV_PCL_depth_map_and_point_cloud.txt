@@ -1,0 +1,87 @@
+The sample 3, to work with OpenCV and PCL to show depth map and point cloud obtained from ToF sensor, which requires ROS Kinetic or PCL as dependencies.
+
+Prerequisites:
+
+  x64
+  ubuntu 16.04
+  ROS Kinetic + OpenCV or PCL + OpenCV
+
+Before you start
+
+  If you already have "ROS Kinetic" installed, jump to the section of "Install OpenCV". 
+  
+  If you do not have "ROS Kinetic" installed, you have options:
+  
+     1. install "ROS Kinetic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Kinetic") and jump to the section of "Install OpenCV".
+     
+     2. if you do not want "ROS Kinetic" to be installed for whatever reason, go to next step of "Install dependencies".
+    
+Install dependencies
+
+  >> sudo apt-get update
+  
+  >> sudo apt install git build-essential cmake cmake-qt-gui doxygen mpi-default-dev openmpi-bin openmpi-common libflann1.8 libflann-dev libeigen3-dev libboost-all-dev libvtk6-dev libvtk6.2 libvtk6.2-qt libqhull-dev libusb-dev libgtest-dev freeglut3-dev pkg-config libxmu-dev libxi-dev libusb-1.0-0-dev graphviz mono-complete libphonon-dev phonon-backend-vlc phonon-backend-gstreamer qt-sdk libopenni-dev libopenni2-dev libjpeg-dev libavcodec-dev libavformat-dev libv4l-dev x264 v4l-utils libgtk2.0-dev libproj-dev
+
+Install PCL:
+  
+  Download PCL 1.8.1 source release from here: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.zip
+
+  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/pcl-pcl-1.8.1
+    
+  >> cd ~/pcl-pcl-1.8.1
+   
+  >> mkdir build
+	
+  >> cd build
+	
+  >> cmake -D CMAKE_BUILD_TYPE=Release -DBUILD_examples=OFF ..
+    
+  >> make -j2
+    
+  >> sudo make install
+
+Install OpenCV
+
+  Download OpenCV v3.4.0 source from here: https://github.com/opencv/opencv/archive/3.4.0.zip
+
+  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-3.4.0
+
+  Open a terminal and run following commands:
+
+  >> cd ~/opencv-3.4.0
+	
+  >> mkdir build
+    
+  >> cd build
+    
+  >> cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local .. -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON -DENABLE_PRECOMPILED_HEADERS=OFF
+    
+  >> make -j4
+    
+  >> sudo make install
+  
+Build and run the sample application:
+
+1. Plug in the sensor, and set USB permission:
+
+  >> sudo chmod a+rw /dev/ttyACM0
+
+2. Extract VSEMI_TOF_SDK archive into /home directory, there should be: ~/VSEMI_TOF_SDK
+
+3. Build sample desktop application:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3/build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+
+  >> make
+
+4. To start the sample desktop application, run command:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3/build
+
+  >> ./vsemi_tof_cam
+
+5. To stop the application, press Esc key when the depth map window active, or use mouse to close the point cloud window.
+
+
