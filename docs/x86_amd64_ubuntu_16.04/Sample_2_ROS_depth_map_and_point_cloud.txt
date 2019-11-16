@@ -26,7 +26,7 @@ Install ROS Kinetic
 
   >> sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential libgtk2.0-dev libproj-dev
   
-  If there is no error throughout the above installation process, dependencies should have been installed successfully.
+  ## If there is no error throughout the above installation process, dependencies should have been installed successfully.
 
 Build and run sample application:
 
@@ -40,21 +40,21 @@ Build and run sample application:
 
   >> cd ~/VSEMI_TOF_SDK/samples/sample2
 
-  make sure the file src/vsemi_tof_cam/cfg/vsemi_tof_cam.cfg has execute permission:
+  ## make sure the file src/vsemi_tof_cam/cfg/vsemi_tof_cam.cfg has execute permission:
 
   >> sudo chmod a+rxw src/vsemi_tof_cam/cfg/vsemi_tof_cam.cfg
 
-  >> catkin_make -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+  >> catkin_make -DVSEMI_TARGET_PLATFORM=x64_ubuntu_16.04
 
 4. To start the ROS sample application, run command:
 
   >> cd ~/VSEMI_TOF_SDK/samples/sample2
 
-  If it is first time to run ROS sample, please make sure "run.sh" has execute permission:
+  ## If it is first time to run ROS sample, please make sure "run.sh" has execute permission:
 
   >> sudo chmod a+rxw run.sh
 
-  Then run command to start ROS sample application:
+  ## Then run command to start ROS sample application:
 
   >> ./run.sh
 

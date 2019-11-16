@@ -24,9 +24,9 @@ Install dependencies
 
 Install PCL:
   
-  Download PCL 1.8.1 source release from here: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.zip
+  ## Download PCL 1.8.1 source release from here: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.zip
 
-  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/pcl-pcl-1.8.1
+  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/pcl-pcl-1.8.1
     
   >> cd ~/pcl-pcl-1.8.1
    
@@ -42,11 +42,11 @@ Install PCL:
 
 Install OpenCV
 
-  Download OpenCV v3.4.0 source from here: https://github.com/opencv/opencv/archive/3.4.0.zip
+  ## Download OpenCV v3.4.0 source from here: https://github.com/opencv/opencv/archive/3.4.0.zip
 
-  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-3.4.0
+  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-3.4.0
 
-  Open a terminal and run following commands:
+  ## Open a terminal and run following commands:
 
   >> cd ~/opencv-3.4.0
 	
@@ -70,9 +70,11 @@ Build and run the sample application:
 
 3. Build sample desktop application:
 
-  >> cd ~/VSEMI_TOF_SDK/samples/sample3/build
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3
 
-  >> cmake .. -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x64_ubuntu_16.04
 
   >> make
 

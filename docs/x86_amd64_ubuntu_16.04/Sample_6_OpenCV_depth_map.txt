@@ -20,11 +20,11 @@ Install dependencies
 
 Install OpenCV
 
-  Download OpenCV v3.4.0 source from here: https://github.com/opencv/opencv/archive/3.4.0.zip
+  ## Download OpenCV v3.4.0 source from here: https://github.com/opencv/opencv/archive/3.4.0.zip
 
-  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-3.4.0
+  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-3.4.0
 
-  Open a terminal and run following commands:
+  ## Open a terminal and run following commands:
 
   >> cd ~/opencv-3.4.0
 	
@@ -48,9 +48,11 @@ Build and run sample application
 
 3. Build sample desktop application:
 
-  >> cd ~/VSEMI_TOF_SDK/samples/sample6/build
+  >> cd ~/VSEMI_TOF_SDK/samples/sample6
 
-  >> cmake .. -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x64_ubuntu_16.04
 
   >> make
 

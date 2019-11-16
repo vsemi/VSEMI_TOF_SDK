@@ -22,9 +22,11 @@ Build and run the sample application
 
 3. Build sample desktop application:
 
-  >> cd ~/VSEMI_TOF_SDK/samples/sample5/build
+  >> cd ~/VSEMI_TOF_SDK/samples/sample5
 
-  >> cmake .. -DVSEMI_TARGET_PLATFORM=x86_amd64_ubuntu_16.04
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x64_ubuntu_16.04
 
   >> make
 
