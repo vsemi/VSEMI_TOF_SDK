@@ -24,9 +24,9 @@ Install dependencies
 
 Install PCL:
   
-  Download PCL 1.8.1 source release from here: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.zip
+  ## Download PCL 1.8.1 source release from here: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.zip
 
-  Extract the package into a directory (this guide use /home directory as an example). There should be: ~/pcl-pcl-1.8.1
+  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/pcl-pcl-1.8.1
     
   >> cd ~/pcl-pcl-1.8.1
    
@@ -50,7 +50,9 @@ Build and run the sample application:
 
 3. Build sample desktop application:
 
-  >> cd ~/VSEMI_TOF_SDK/samples/sample3/build
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3
+
+  >> mkdir build && cd build
 
   >> cmake .. -DVSEMI_TARGET_PLATFORM=jetson_jetpack_3.0
 

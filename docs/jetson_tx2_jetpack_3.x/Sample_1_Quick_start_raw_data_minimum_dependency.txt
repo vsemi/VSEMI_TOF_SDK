@@ -24,7 +24,9 @@ Build and run sample application:
 
 3. Build sample desktop application:
 
-  >> cd ~/VSEMI_TOF_SDK/samples/sample1/build
+  >> cd ~/VSEMI_TOF_SDK/samples/sample1
+
+  >> mkdir build && cd build
 
   >> cmake .. -DVSEMI_TARGET_PLATFORM=jetson_jetpack_3.0
 
