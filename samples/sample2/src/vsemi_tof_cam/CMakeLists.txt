@@ -35,7 +35,7 @@ generate_dynamic_reconfigure_options(cfg/vsemi_tof_cam.cfg)
 ###################################
 
 catkin_package(
-  INCLUDE_DIRS include
+##  INCLUDE_DIRS include
   LIBRARIES vsemi_tof_cam
   CATKIN_DEPENDS roscpp dynamic_reconfigure message_runtime sensor_msgs std_msgs
 )
