@@ -1,0 +1,61 @@
+The sample 3, to work with OpenCV and PCL to show depth map and point cloud obtained from ToF sensor, which requires ROS Melodic or PCL as dependencies.
+
+Prerequisites:
+
+  x64
+  ubuntu 18.04
+  ROS Melodic + OpenCV
+
+Before you start
+
+  If you already have "ROS Melodic" installed, go to the section of "Install OpenCV". 
+  
+  If you do not have "ROS Melodic" installed, install "ROS Melodic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Melodic") and go to the section of "Install OpenCV".
+
+Install OpenCV
+
+  ## Download OpenCV v4.1.1 source from here: https://github.com/opencv/opencv/archive/4.1.1.zip
+
+  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-4.1.1
+
+  ## Open a terminal and run following commands:
+
+  >> cd ~/opencv-4.1.1
+	
+  >> mkdir build
+    
+  >> cd build
+    
+  >> cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local .. -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON -DENABLE_PRECOMPILED_HEADERS=OFF
+    
+  >> make -j4
+    
+  >> sudo make install
+  
+Build and run the sample application:
+
+1. Plug in the sensor, and set USB permission:
+
+  >> sudo chmod a+rw /dev/ttyACM0
+
+2. Extract VSEMI_TOF_SDK archive into /home directory, there should be: ~/VSEMI_TOF_SDK
+
+3. Build sample desktop application:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3
+
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=x64_ubuntu_18.04
+
+  >> make
+
+4. To start the sample desktop application, run command:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample3/build
+
+  >> ./vsemi_tof_cam
+
+5. To stop the application, press Esc key when the depth map window active, or use mouse to close the point cloud window.
+
+
