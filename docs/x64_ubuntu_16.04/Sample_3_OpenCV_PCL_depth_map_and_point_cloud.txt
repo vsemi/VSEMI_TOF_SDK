@@ -4,15 +4,15 @@ Prerequisites:
 
   x64
   ubuntu 16.04
-  ROS Kinetic + OpenCV or PCL + OpenCV
+  ROS Kinetic or PCL + OpenCV
 
 Before you start
 
-  If you already have "ROS Kinetic" installed, jump to the section of "Install OpenCV". 
+  If you already have "ROS Kinetic" installed, jump to the section of "Build and run the sample application". 
   
   If you do not have "ROS Kinetic" installed, you have options:
   
-     1. install "ROS Kinetic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Kinetic") and jump to the section of "Install OpenCV".
+     1. install "ROS Kinetic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Kinetic") and jump to the section of "Build and run the sample application".
      
      2. if you do not want "ROS Kinetic" to be installed for whatever reason, go to next step of "Install dependencies".
     
@@ -60,7 +60,7 @@ Install OpenCV
     
   >> sudo make install
   
-Build and run the sample application:
+Build and run the sample application
 
 1. Plug in the sensor, and set USB permission:
 
