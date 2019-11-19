@@ -10,7 +10,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 find_package(Boost COMPONENTS system REQUIRED)
 
-find_package(OpenCV 3.3.0 REQUIRED)
+find_package(OpenCV 3.2.0 REQUIRED)
 
 message("OpenCV version: ${OpenCV_VERSION}")
 

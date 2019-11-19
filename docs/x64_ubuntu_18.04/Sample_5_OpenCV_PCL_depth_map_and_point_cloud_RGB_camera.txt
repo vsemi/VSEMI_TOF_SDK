@@ -6,7 +6,7 @@ Prerequisites:
 
   x64
   ubuntu 18.04
-  ROS Melodic + OpenCV
+  ROS Melodic
 
 Before you start
 

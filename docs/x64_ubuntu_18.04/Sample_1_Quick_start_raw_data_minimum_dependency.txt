@@ -10,6 +10,8 @@ Prerequisites:
 
 Install dependencies
 
+  >> sudo apt update
+
   >> sudo apt install cmake
 
   >> sudo apt install libboost-all-dev

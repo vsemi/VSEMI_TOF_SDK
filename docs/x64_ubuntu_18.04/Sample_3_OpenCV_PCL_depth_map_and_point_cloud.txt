@@ -4,35 +4,15 @@ Prerequisites:
 
   x64
   ubuntu 18.04
-  ROS Melodic + OpenCV
+  ROS Melodic
 
 Before you start
 
-  If you already have "ROS Melodic" installed, go to the section of "Install OpenCV". 
+  If you already have "ROS Melodic" installed, go to the section of "Build and run the sample application". 
   
-  If you do not have "ROS Melodic" installed, install "ROS Melodic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Melodic") and go to the section of "Install OpenCV".
-
-Install OpenCV
-
-  ## Download OpenCV v4.1.1 source from here: https://github.com/opencv/opencv/archive/4.1.1.zip
-
-  ## Extract the package into a directory (this guide use /home directory as an example). There should be: ~/opencv-4.1.1
-
-  ## Open a terminal and run following commands:
-
-  >> cd ~/opencv-4.1.1
-	
-  >> mkdir build
-    
-  >> cd build
-    
-  >> cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local .. -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON -DENABLE_PRECOMPILED_HEADERS=OFF
-    
-  >> make -j4
-    
-  >> sudo make install
+  If you do not have "ROS Melodic" installed, install "ROS Melodic" (refer to "Sample_2_ROS_depth_map_and_point_cloud.txt", section "Install ROS Melodic") and go to the section of "Build and run the sample application".
   
-Build and run the sample application:
+Build and run the sample application
 
 1. Plug in the sensor, and set USB permission:
 

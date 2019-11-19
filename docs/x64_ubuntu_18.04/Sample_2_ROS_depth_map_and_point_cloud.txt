@@ -24,7 +24,7 @@ Install ROS Melodic
 
   >> source ~/.bashrc
 
-  >> sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential.
+  >> sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
   
   ## If there is no error throughout the above installation process, dependencies should have been installed successfully.
 
