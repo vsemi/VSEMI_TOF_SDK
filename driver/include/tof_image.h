@@ -33,6 +33,15 @@ struct ToF_Image
 	float*   data_depth;
 
 	/*!
+	* @brief Pointer of an arry uint8_t[n_points], grayscale data.
+	*
+	* Example of reinterpreting to Opencv Mat:
+	*
+	* Mat grayscale_mat = Mat(tof_image->height, tof_image->width, CV_8UC1, tof_image->data_grayscale);
+	*/
+	uint8_t*   data_grayscale;
+
+	/*!
 	* @brief Pointer of an arry float[n_points * 8], 3D points in XYZRGB format:
 	* float x
 	* float y
@@ -103,6 +112,7 @@ struct ToF_Image
 		data_3d_xyz_rgb     = new float[n_points * 8];
 		data_2d_bgr         = new uint8_t[n_points * 3];
 		saturated_mask      = new uint8_t[n_points];
+		data_grayscale      = new uint8_t[n_points];
 	}
 };
 

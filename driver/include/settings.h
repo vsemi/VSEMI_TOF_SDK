@@ -41,6 +41,8 @@ struct Settings{
 	uint integrationTimeBTOF1;     /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 1, use this to set integration time for narrow beam */
 	uint integrationTimeBTOF2;     /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 1, use this to set integration time for narrow beam */
 
+	uint integrationTimeGray;      /*! 0 - 50000, integration time for grayscale */
+
 	uint minAmplitude1;            /*! 0 - 2047, threshold minAmplitude 0 beam A LSB */
 	uint minAmplitude2;            /*! 0 - 2047, threshold minAmplitude 1 beam A LSB */
 	uint minAmplitude3;            /*! 0 - 2047, threshold minAmplitude 2 beam A LSB */
@@ -52,7 +54,9 @@ struct Settings{
 	uint roi_rightX;   /*! 0 - 160 (image width)  region of interest right  x */
 	uint roi_bottomY;  /*! 0 -  60 (image height) region of interest bottom y */
 
-	int range;         /*! 0 - 9000, the depth range in mm, for coloring the BGR depth map and the 3D points */
+	int offsetDistance;         /*! 0 - 15000, the depth offset in mm */
+
+	int range;                  /*! 0 - 9000, the depth range in mm, for coloring the BGR depth map and the 3D points */
 
 	bool ignoreSaturatedPoints; /*! true to ignore saturated points coursed by strong reflection or too big integration time */
 
