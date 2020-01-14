@@ -33,14 +33,14 @@ void initConfig()
 
 	settings.automaticIntegrationTime = false; /*! true for auto integration time, false to turn off auto integration time */
 
-	settings.integrationTimeATOF1     = 500;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0, use this to set integration time for wide FOV */
-	settings.integrationTimeATOF2     = 100;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
-	settings.integrationTimeATOF3     = 0;        /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
+	settings.integrationTimeATOF1     = 1000;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0, use this to set integration time for wide FOV */
+	settings.integrationTimeATOF2     = 200;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
+	settings.integrationTimeATOF3     = 10;        /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
 	settings.integrationTimeATOF4     = 0;        /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
 
-	settings.minAmplitude1            = 50;       /*! 0 - 2047, threshold minAmplitude 0 beam A LSB */
-	settings.minAmplitude2            = 10;       /*! 0 - 2047, threshold minAmplitude 1 beam A LSB */
-	settings.minAmplitude3            = 0;        /*! 0 - 2047, threshold minAmplitude 2 beam A LSB */
+	settings.minAmplitude1            = 10;       /*! 0 - 2047, threshold minAmplitude 0 beam A LSB */
+	settings.minAmplitude2            = 40;       /*! 0 - 2047, threshold minAmplitude 1 beam A LSB */
+	settings.minAmplitude3            = 60;        /*! 0 - 2047, threshold minAmplitude 2 beam A LSB */
 	settings.minAmplitude4            = 0;        /*! 0 - 2047, threshold minAmplitude 3 beam A LSB */
 
 	settings.roi_leftX   = 0;   /*! 0 - 160 (image width)  region of interest left   x */
