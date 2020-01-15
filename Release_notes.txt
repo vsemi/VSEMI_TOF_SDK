@@ -1,3 +1,17 @@
+VSEMI TOF SDK 1.3.4
+Jan 14, 2020
+
+What's new:
+
+. Improvement of point cloud
+. Update samples with best HDR parameters
+
+Bug fixes:
+
+. Fix curvature of the point cloud
+
+===================
+
 VSEMI TOF SDK 1.3.3
 Dec 25, 2019
 
@@ -9,6 +23,7 @@ Bug fixes:
 
 . Fixed calibration issue;
 
+===================
 
 VSEMI TOF SDK 1.3.2
 Nov 11, 2019

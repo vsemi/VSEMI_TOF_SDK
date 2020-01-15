@@ -1,6 +1,6 @@
-VSEMI TOF SDK 1.3.3
+VSEMI TOF SDK 1.3.4
 Visionary Semiconductor Inc.
-Dec 25, 2019
+Jan 14, 2020
 
 Introduction
 
