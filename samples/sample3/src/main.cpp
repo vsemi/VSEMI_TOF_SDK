@@ -56,7 +56,7 @@ void initConfig()
 	settings.roi_rightX  -= (settings.roi_rightX - settings.roi_leftX + 1) % 4;
 	settings.roi_bottomY -= (settings.roi_bottomY - settings.roi_topY + 1) % 4;
 
-	settings.range  = 4000; /*! 0 - 9000, the depth range in mm, for coloring the BGR depth map and the 3D points */
+	settings.range  = 7000; /*! 0 - 9000, the depth range in mm, for coloring the BGR depth map and the 3D points */
 
 	settings.startStream = true; /*! true to start ToF sensor */
 	settings.runVideo    = true;    /*! true to start ToF sensor */
@@ -91,7 +91,7 @@ void points_cloud_visualize() {
 	viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "point_cloud");
 	viewer->initCameraParameters();
 
-	viewer->setCameraPosition(0, 0, -1,    0, 0, 0,   0, 0, 0);
+	viewer->setCameraPosition(0, 0, -0.5,    0, 0, 0,   0, 0, 0);
 
 	while (!viewer->wasStopped() && !is_stopped)
 	{

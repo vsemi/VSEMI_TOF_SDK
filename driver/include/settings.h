@@ -60,6 +60,11 @@ struct Settings{
 
 	bool ignoreSaturatedPoints; /*! true to ignore saturated points coursed by strong reflection or too big integration time */
 
+	double angle_x      = 50.0f;  /*! horizontal angle of the FOV, modify this to calibrate horizontal angle of the FOV */
+	double angle_y      = 18.75f; /*! vertical angle of the FOV, modify this to calibrate vertical angle of the FOV */
+
+	uint pointCloudColor = 0; /*! point cloud color scheme, 0 - distance pseudo color, 1 - grayscale */
+
 };
 
 #endif // VSEMI_TOF_DRIVER_SETTINGS_H
