@@ -33,8 +33,8 @@ The point cloud:
 
 **sample6**:                   work with depth map with OpenCV
 
-## Develop your own application:
-*For more information, refer to the sample applications under samples/sample1*
+## Quick start:
+*For more information, refer to the sample application under samples/sample1*
 
 **settings**:
 ```
@@ -134,4 +134,153 @@ int main() {
 }
 ```
 
-To be started, please read instructions in docs folder to build and run the sample applications.
+## To use Vsemi ToF Camera in ROS:
+*For more information, refer to the sample application under samples/sample2*
+
+**configuration**:
+```
+#!/usr/bin/env python
+
+PACKAGE = "vsemi_tof_cam"
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+
+op_mod_enum     = gen.enum([ gen.const("Wide_Field_image", int_t, 0, "Wide Field image"),
+                             gen.const("Narrow_Field_manual", int_t, 1, "Narrow Field manual")
+                             ], "An enum to set operating mode")
+
+hdr_enum        = gen.enum([ gen.const("HDR_off", int_t, 0, "HDR off"),
+                            gen.const("HDR_spatial", int_t, 1, "HDR spatial"),
+                             gen.const("HDR_temporal", int_t, 2, "HDR temporal")
+                           ], "An enum to set HDR modes")
+
+color_enum        = gen.enum([ gen.const("Distance", int_t, 0, "Distance"),
+                            gen.const("Grayscale", int_t, 1, "Grayscale")
+                           ], "An enum to set Point Cloud Color")
+
+######  Name                          Type   Reconfiguration level  Description     Default Min  Max
+gen.add("mode",                       int_t,       0,  "Operating mode", 0, 0, 3, edit_method = op_mod_enum)
+
+gen.add("angle_x",                    double_t,    0,  "Horizontal Angle of FOV [degrees]",  50.0,  0, 50.0 )
+gen.add("angle_y",                    double_t,    0,  "Vertical Angle of FOV [degrees]",    18.75, 0, 18.75)
+
+gen.add("frame_rate",                 double_t,    0,  "Frame rate [Hz]",  50.0, 0, 50.0)
+
+gen.add("ignore_saturated_points",    bool_t,      0,  "Ignore Saturated Points",  False)
+ 
+gen.add("hdr",                        int_t,       0,  "HDR mode", 2, 0, 2, edit_method = hdr_enum)
+
+gen.add("automatic_integration_time", bool_t,      0,  "Automatic integration time",  False)
+
+gen.add("integration_time_0",         int_t,       0,  "Integration time TOF for beam A [uS]",      1000, 0, 1000)
+gen.add("integration_time_1",         int_t,       0,  "Integration time TOF for beam A [uS]",       200, 0, 1000)
+gen.add("integration_time_2",         int_t,       0,  "Integration time TOF for beam A [uS]",        10, 0, 1000)
+gen.add("integration_time_3",         int_t,       0,  "Integration time TOF for beam A [uS]",         0, 0, 1000)
+gen.add("integration_time_4",         int_t,       0,  "Integration time TOF for beam B [uS]",         0, 0, 1000)
+gen.add("integration_time_5",         int_t,       0,  "Integration time TOF for beam B [uS]",         0, 0, 1000)
+
+gen.add("integration_time_gray",      int_t,       0,  "Integration time Grayscale [uS]",          25000, 0, 50000)
+
+gen.add("min_amplitude_0",            int_t,       0,  "threshold minAmplitude 0 beam A LSB",         10, 0, 2047)
+gen.add("min_amplitude_1",            int_t,       0,  "threshold minAmplitude 1 beam A LSB",         40, 0, 2047)
+gen.add("min_amplitude_2",            int_t,       0,  "threshold minAmplitude 2 beam A LSB",         60, 0, 2047)
+gen.add("min_amplitude_3",            int_t,       0,  "threshold minAmplitude 3 beam A LSB",          0, 0, 2047)
+gen.add("min_amplitude_4",            int_t,       0,  "threshold minAmplitude 4 beam B LSB",          0, 0, 2047)
+
+gen.add("offset_distance",            int_t,       0,  "distance offset mm",       0, -10000, 15000)
+
+gen.add("roi_left_x",                 int_t,       0,  "ROI left X",     0, 0,  153)
+gen.add("roi_top_y",                  int_t,       0,  "ROI top Y",      0, 0,   57)
+gen.add("roi_right_x",                int_t,       0,  "ROI right X",  159, 5,  159)
+gen.add("roi_bottom_y",               int_t,       0,  "ROI bottom Y",  59, 1,   59)
+
+gen.add("point_cloud_color",          int_t,       0,  "Point Cloud Color", 0, 0, 1, edit_method = color_enum)
+
+gen.add("range",                      int_t,       0,  "Range",  6000, 1000,   9000)
+
+exit(gen.generate(PACKAGE, "tof_cam_node", "vsemi_tof_cam"))
+```
+
+*Subscribe ToF image*:
+```
+/**
+* to receive a frame
+*/
+void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
+{
+	if (process_busy) return;
+
+	cloud_scene->points.clear();
+
+	pcl::PointXYZRGB* data_ptr = reinterpret_cast<pcl::PointXYZRGB*>(tof_image->data_3d_xyz_rgb);
+	std::vector<pcl::PointXYZRGB> pts(data_ptr, data_ptr + tof_image->n_points);
+
+	cloud_scene->points.insert(cloud_scene->points.end(), pts.begin(), pts.end());
+
+	cv::Mat depth_bgr(tof_image->height, tof_image->width, CV_8UC3, tof_image->data_2d_bgr);
+	cv::Mat grayscale(tof_image->height, tof_image->width, CV_8UC1, tof_image->data_grayscale);
+
+	cloud_scene->resize(tof_image->n_points);
+	cloud_scene->width = tof_image->n_points;
+	cloud_scene->height = 1;
+	cloud_scene->is_dense = false;
+
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene(new pcl::PointCloud<pcl::PointXYZRGB>);
+	copyPointCloud(*cloud_scene, *scene);
+
+	process_scene(scene, depth_bgr.clone(), grayscale.clone());
+}
+```
+
+*main loop*:
+```
+/**
+* main
+*/
+int main(int argc, char **argv)
+{
+	ros::init(argc, argv, "tof_cam_node");
+
+	dynamic_reconfigure::Server<vsemi_tof_cam::vsemi_tof_camConfig> server;
+	dynamic_reconfigure::Server<vsemi_tof_cam::vsemi_tof_camConfig>::CallbackType f;
+	f = boost::bind(&updateConfig, _1, _2);
+	server.setCallback(f);
+
+	package_path = ros::package::getPath("vsemi_tof_cam");
+
+	initialise();
+
+	/**
+	* Create driver instance, and init communication
+	*/
+	ToF_Camera_Driver tof_camera_driver(settings);
+
+	bool initiated = tof_camera_driver.initCommunication();
+
+	if (! initiated)
+	{
+		return 1;
+	}
+
+	/**
+	* Connect signal to obtain ToF_Imagem which contains data include raw distance data array, colored depth data array and 3D points data array.
+	*/
+	tof_camera_driver.sig_tof_image_received.connect(boost::bind(&tof_image_received, _1));
+
+	/**
+	* ROS main loop
+	*/
+	while(ros::ok()){
+
+		/**
+		* To request update, either requesting update parameters or requesting new frame
+		*/
+		tof_camera_driver.update();
+
+		ros::spinOnce();
+
+	}
+}
+```
