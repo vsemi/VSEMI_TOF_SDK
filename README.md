@@ -24,10 +24,10 @@ Sample applications:
 
 - sample3:                   work with depth map and point cloud using OpenCV and PCL
 
-The point cloud:
+  The point cloud:
   ![Image of Sample3 = Point cloud](samples/sample3/sample_3_1.png)
 
-The depth map:
+  The depth map:
   ![Image of Sample3 = Point cloud](samples/sample3/sample_3_2.png)
 
 - sample4:                   work with depth map, point cloud and RGB camera in ROS environment
