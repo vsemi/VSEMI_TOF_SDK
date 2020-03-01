@@ -15,10 +15,19 @@ Sample applications:
 -sample1:                   work with raw data with minimum_dependency
 
 -sample2:                   work with depth map and point cloud in ROS environment
-![Image of Yaktocat](samples/sample2/sample_2_1.png)
+
+ Point cloud with distance pseudo-color:
+ ![Image of Sample2](samples/sample2/sample_2_1.png)
+ Point cloud with grayscale:
+ ![Image of Sample2](samples/sample2/sample_2_2.png)
 
 -sample3:                   work with depth map and point cloud using OpenCV and PCL
-![Image of Yaktocat](samples/sample3/sample_3_1.png)
+
+The point cloud:
+![Image of Sample3 = Point cloud](samples/sample3/sample_3_1.png)
+
+The depth map:
+![Image of Sample3 = Point cloud](samples/sample3/sample_3_2.png)
 
 -sample4:                   work with depth map, point cloud and RGB camera in ROS environment
 
