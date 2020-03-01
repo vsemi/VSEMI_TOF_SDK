@@ -134,7 +134,7 @@ int main() {
 }
 ```
 
-## To use Vsemi ToF Camera in ROS:
+## ROS:
 *For more information, refer to the sample application under samples/sample2*
 
 **configuration**:
