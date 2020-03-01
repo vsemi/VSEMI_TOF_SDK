@@ -10,7 +10,7 @@ Introduction
    It was developed for easy and fast development and/or deployment in real applications, such as robotics, drones, and automotives. 
    As a ToF 3D camera, Sentinel-V3 does not require moving components and is thus robust and wear-free. 
 
-Sample applications:
+##Sample applications:
 
 - sample1:                   work with raw data with minimum_dependency
 
