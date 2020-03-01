@@ -209,7 +209,7 @@ gen.add("range",                      int_t,       0,  "Range",  6000, 1000,   9
 exit(gen.generate(PACKAGE, "tof_cam_node", "vsemi_tof_cam"))
 ```
 
-*Subscribe ToF image*:
+**Subscribe ToF image**:
 ```
 /**
 * to receive a frame
