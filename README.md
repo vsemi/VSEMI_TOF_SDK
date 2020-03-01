@@ -33,21 +33,34 @@ The point cloud:
 
 **sample6**:                   work with depth map with OpenCV
 
-## Quick start:
+## Develop your own application:
 
-**Minimum settings**
+**settings**:
 ```
 static Settings settings;
+
 void initConfig()
 {
 	settings.mode = 0; /*! 0 for wide FOV, and 1 for narrow beam */
+
 	settings.hdr  = 2; /*! 0 HDR off, 1 for HDR spatial and 2 for HDR temporal */
+
 	settings.frameRate = 50.0; /*! frame rate, this can be changed at runtime, for example 30.0 */
-	settings.automaticIntegrationTime = true; /*! true for auto integration time, false to turn off auto integration time */
+
+	settings.automaticIntegrationTime = false; /*! true for auto integration time, false to turn off auto integration time */
+
+	settings.integrationTimeATOF1     = 1000;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0, use this to set integration time for wide FOV */
+	settings.integrationTimeATOF2     = 200;      /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
+	settings.integrationTimeATOF3     = 10;        /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
+	settings.integrationTimeATOF4     = 0;        /*! 0 - 1000, if automaticIntegrationTime set to false and mode set to 0 and hdr is set to 2, use this to set integration time for HDR range */
+
+	settings.minAmplitude1            = 10;       /*! 0 - 2047, threshold minAmplitude 0 beam A LSB */
+	settings.minAmplitude2            = 20;       /*! 0 - 2047, threshold minAmplitude 1 beam A LSB */
+	settings.minAmplitude3            = 60;        /*! 0 - 2047, threshold minAmplitude 2 beam A LSB */
+	settings.minAmplitude4            = 0;        /*! 0 - 2047, threshold minAmplitude 3 beam A LSB */
 
 	settings.roi_leftX   = 0;   /*! 0 - 160 (image width)  region of interest left   x */
 	settings.roi_topY    = 0;   /*! 0 -  60 (image height) region of interest top    y */
-  
 	settings.roi_rightX  = 159; /*! 0 - 160 (image width)  region of interest right  x */
 	settings.roi_bottomY = 59;  /*! 0 -  60 (image height) region of interest bottom y */
 
@@ -59,10 +72,12 @@ void initConfig()
 	settings.startStream = true; /*! true to start ToF sensor */
 	settings.runVideo    = true;    /*! true to start ToF sensor */
 	settings.updateParam = true; /*! true to start ToF sensor */
+
+	settings.ignoreSaturatedPoints = false; /*! true to ignore saturated points coursed by strong reflection or too big integration time */
 }
 ```
 
-Subscribe ToF camera image:
+**Subscribe ToF camera image**:
 ```
 void update_tof_image_visualize(std::shared_ptr<ToF_Image> tof_image)
 {
@@ -80,7 +95,7 @@ void update_tof_image_visualize(std::shared_ptr<ToF_Image> tof_image)
 }
 ```
 
-The main function:
+**The main function**:
 ```
 int main() {
 	cout << "Vsemi TOF Camera is starting ..." << endl;
