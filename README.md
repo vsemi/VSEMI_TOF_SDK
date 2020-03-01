@@ -15,6 +15,7 @@ Sample applications:
 -sample1:                   work with raw data with minimum_dependency
 
 -sample2:                   work with depth map and point cloud in ROS environment
+![Image of Yaktocat](samples/sample2/sample_2_1.png)
 
 -sample3:                   work with depth map and point cloud using OpenCV and PCL
 
