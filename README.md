@@ -34,7 +34,7 @@ The point cloud:
 **sample6**:                   work with depth map with OpenCV
 
 ## Develop your own application:
-*For more information, refer to the sample applications under samples/sample1
+*For more information, refer to the sample applications under samples/sample1*
 
 **settings**:
 ```
