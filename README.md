@@ -311,4 +311,6 @@ Determine dependencies, **boost** is the only mandatory dependency for the ToF s
 ## Contact
 
 To purchase Vsemi ToF Camera, please visit http://www.vesimi.io
+
 Contact us: infor@visemi.io
+
