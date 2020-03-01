@@ -27,9 +27,6 @@ Sample applications:
   The point cloud:
   ![Image of Sample3 = Point cloud](samples/sample3/sample_3_1.png)
 
-  The depth map:
-  ![Image of Sample3 = Depth map](samples/sample3/sample_3_2.png)
-
 - sample4:                   work with depth map, point cloud and RGB camera in ROS environment
 
 - sample5:                   work with depth map, point cloud and RGB camera using OpenCV and PCL
