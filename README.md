@@ -308,3 +308,7 @@ Determine dependencies, **boost** is the only mandatory dependency for the ToF s
  - USB permission not grant to current user;
  - The power USB provided is not enough so the sensor is not started correctly - although it is rare, but some edge devices or lightweight laptops, the USB power may not powerful enough and occasionally the sensor could not be started correctly, in such case, you may try unplug and plug in the sensor again and wait for a couple of more seconds and retry, and remember grant USB permission after re-plugged the sensor in.
 
+## Contact
+
+To purchase Vsemi ToF Camera, please visit http://www.vesimi.io
+Contact us: infor@visemi.io
