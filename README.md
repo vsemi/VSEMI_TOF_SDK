@@ -18,6 +18,7 @@ Sample applications:
 ![Image of Yaktocat](samples/sample2/sample_2_1.png)
 
 -sample3:                   work with depth map and point cloud using OpenCV and PCL
+![Image of Yaktocat](samples/sample3/sample_3_1.png)
 
 -sample4:                   work with depth map, point cloud and RGB camera in ROS environment
 
