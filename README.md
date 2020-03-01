@@ -240,7 +240,7 @@ void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
 }
 ```
 
-*main loop*:
+**main loop**:
 ```
 /**
 * main
