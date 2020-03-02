@@ -37,7 +37,7 @@ The point cloud:
 *For more information, refer to the sample application under [samples/sample1](samples/sample1)*
 
 **Before start**
- - **Plus** your Vsemi ToF 3D sensor;
+ - **Plug** your Vsemi ToF 3D sensor;
  - Grant **USB permission** to the current user (refer to the instruction of sample applications), and *remember that every time unplugged and plugged the sensor, need to re-grant USB permission*;
  - Compiling and running a **sample application** successfully is highly recommended before starting your own application;
  - **Dependencies**: **boost** is mandatory dependency for the ToF sensor driver, and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and if configured properly in your development environment.
