@@ -11,7 +11,6 @@ Feb 29, 2020
    As a ToF 3D camera, **Sentinel-V3** does not require moving components and is thus robust and wear-free. 
 
 ## Quick start:
-*For more information, refer to the sample application under [samples/sample1](samples/sample1)*
 
 **Before start**
  - **Plug** your Vsemi ToF 3D sensor;
@@ -50,6 +49,8 @@ The point cloud:
  - **Dependencies**: determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
 **Basic settings**:
+*For more information, refer to the sample application under [samples/sample1](samples/sample1)*
+
 ```
 static Settings settings;
 
