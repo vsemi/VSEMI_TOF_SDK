@@ -34,7 +34,7 @@ The point cloud:
 **sample6**:                   work with depth map with OpenCV
 
 ## Quick start:
-*For more information, refer to the sample application under samples/sample1*
+*For more information, refer to the sample application under [samples/sample1](samples/sample1)*
 
 **Before start**
  - **Plus** your Vsemi ToF 3D sensor;
