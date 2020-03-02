@@ -93,7 +93,6 @@ void update_tof_image_visualize(std::shared_ptr<ToF_Image> tof_image)
 	//tof_image->data_3d_xyz_rgba;
 	//tof_image->data_depth
 	//tof_image->data_2d_bgr
-	//data_3d_xyz_rgb
 	for (int i = 0 ; i < tof_image->n_points; i ++)
 	{
 		float distance = tof_image->data_depth[i];
