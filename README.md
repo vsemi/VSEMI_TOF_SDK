@@ -291,19 +291,16 @@ int main(int argc, char **argv)
 ```
 ## Developing you own application
 
- - **Driver**
-   Copy the **include** files and **binary library** file into appropriate folder in your application development environment;
- - **Environment**
-   Configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
+ - **Driver**: copy the **include** files and **binary library** file into appropriate folder in your application development environment;
+ - **Environment**: configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
 
- - **Dependencies**
-   Determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
+ - **Dependencies**: determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
 ## Troubleshooting
 
 **The most common problem is that the application is not able to connect to the sensor**, the reason might be:
 
- - the ToF 3D sensor not plugged;
+ - The ToF 3D sensor not plugged;
  - USB permission not grant to current user;
  - The power USB provided is not enough so the sensor is not started correctly - although it is rare, but some edge devices or lightweight laptops, the USB power may not powerful enough and occasionally the sensor could not be started correctly, in such case, you may try unplug and plug in the sensor again and wait for a couple of more seconds and retry, and remember grant USB permission after re-plugged the sensor in.
 
