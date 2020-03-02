@@ -291,13 +291,13 @@ int main(int argc, char **argv)
 ```
 ## Developing you own application
 
-**Driver**
-Copy the **include** files and **binary library** file into appropriate folder in your application development environment;
+ - **Driver**
+   Copy the **include** files and **binary library** file into appropriate folder in your application development environment;
+ - **Environment**
+   Configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
 
-Configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
-
-**Dependencies**
-Determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the sample 1, which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
+ - **Dependencies**
+   Determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
 ## Troubleshooting
 
