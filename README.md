@@ -10,6 +10,15 @@ Feb 29, 2020
    It was developed for easy and fast development and/or deployment in real applications, such as robotics, drones, and automotives. 
    As a ToF 3D camera, **Sentinel-V3** does not require moving components and is thus robust and wear-free. 
 
+## Quick start:
+*For more information, refer to the sample application under [samples/sample1](samples/sample1)*
+
+**Before start**
+ - **Plug** your Vsemi ToF 3D sensor;
+ - Grant **USB permission** to the current user (refer to the instruction of sample applications), and *remember that every time unplugged and plugged the sensor, need to re-grant USB permission*;
+ - Compiling and running a **sample application** successfully is highly recommended before starting your own application;
+ - **Dependencies**: **boost** is mandatory dependency for the ToF sensor driver, and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and if configured properly in your development environment.
+
 ## Sample applications:
 
 **[sample1](samples/sample1)**: work with raw data with minimum_dependency
@@ -33,14 +42,12 @@ The point cloud:
 
 **[sample6](samples/sample6)**:                   work with depth map with OpenCV
 
-## Quick start:
-*For more information, refer to the sample application under [samples/sample1](samples/sample1)*
+## Developing you own application
 
-**Before start**
- - **Plug** your Vsemi ToF 3D sensor;
- - Grant **USB permission** to the current user (refer to the instruction of sample applications), and *remember that every time unplugged and plugged the sensor, need to re-grant USB permission*;
- - Compiling and running a **sample application** successfully is highly recommended before starting your own application;
- - **Dependencies**: **boost** is mandatory dependency for the ToF sensor driver, and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and if configured properly in your development environment.
+ - **Driver**: copy the **include** files and **binary library** file into appropriate folder in your application development environment;
+ - **Environment**: configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
+
+ - **Dependencies**: determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
 **Basic settings**:
 ```
@@ -289,12 +296,6 @@ int main(int argc, char **argv)
 	}
 }
 ```
-## Developing you own application
-
- - **Driver**: copy the **include** files and **binary library** file into appropriate folder in your application development environment;
- - **Environment**: configure your application environment to make sure the **include** files in your **include** path and **binary library** file in your **link** path (you may refer to the sample applications how to configure it by using cmake);
-
- - **Dependencies**: determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
 ## Troubleshooting
 
