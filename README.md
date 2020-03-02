@@ -309,7 +309,7 @@ int main(int argc, char **argv)
 
 ## Contact
 
-To purchase Vsemi ToF Camera, please visit http://www.vsimi.io
+To purchase Vsemi ToF Camera, please visit https://vsemi.io
 
-Contact us: infor@vsemi.io
+Contact us: info@vsemi.io
 
