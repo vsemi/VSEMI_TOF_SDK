@@ -42,7 +42,7 @@ The point cloud:
  - Compiling and running a **sample application** successfully is highly recommended before starting your own application;
  - **Dependencies**: **boost** is mandatory dependency for the ToF sensor driver, and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and if configured properly in your development environment.
 
-**settings**:
+**Basic settings**:
 ```
 static Settings settings;
 
@@ -84,7 +84,7 @@ void initConfig()
 }
 ```
 
-**Subscribe ToF camera image**:
+**Subscribe to ToF camera image**:
 ```
 void update_tof_image_visualize(std::shared_ptr<ToF_Image> tof_image)
 {
@@ -143,7 +143,7 @@ int main() {
 ## ROS:
 *For more information, refer to the sample application under samples/sample2*
 
-**configuration**:
+**Configuration**:
 ```
 #!/usr/bin/env python
 
@@ -209,7 +209,7 @@ gen.add("range",                      int_t,       0,  "Range",  6000, 1000,   9
 exit(gen.generate(PACKAGE, "tof_cam_node", "vsemi_tof_cam"))
 ```
 
-**Subscribe ToF image**:
+**Subscribe to ToF image**:
 ```
 /**
 * to receive a frame
