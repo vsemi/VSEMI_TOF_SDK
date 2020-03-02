@@ -48,9 +48,10 @@ The point cloud:
 
  - **Dependencies**: determine dependencies, **boost** is the only mandatory dependency for the ToF sensor driver (you may refer to the [samples/sample1](samples/sample1), which the only dependency required is boost), and additional dependencies depends on what you needed in your own application, for example if you need ROS, or OpenCV and PCL, and configure them properly in your development environment.
 
-## Basic:
+## The basic
 *For more information, refer to the sample application under [samples/sample1](samples/sample1)*
 
+**settings**:
 ```
 static Settings settings;
 
@@ -147,7 +148,7 @@ int main() {
 }
 ```
 
-## ROS:
+## ROS
 *For more information, refer to the sample application under [samples/sample2](samples/sample2)*
 
 **Configuration**:
