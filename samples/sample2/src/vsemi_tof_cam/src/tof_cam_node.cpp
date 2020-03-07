@@ -104,6 +104,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_scene(new pcl::PointCloud<pcl::Poin
 
 static bool process_busy = false;
 
+uint orientation = 0;
+
 void updateConfig(vsemi_tof_cam::vsemi_tof_camConfig &config, uint32_t level)
 {
 	ROS_INFO("Update config ...");
@@ -145,6 +147,8 @@ void updateConfig(vsemi_tof_cam::vsemi_tof_camConfig &config, uint32_t level)
 	settings.roi_bottomY -= (settings.roi_bottomY - settings.roi_topY + 1) % 4;
 
 	settings.pointCloudColor = static_cast<uint>(config.point_cloud_color);
+
+	orientation = static_cast<uint>(config.orientation);
 
 	settings.angle_x = config.angle_x;
 	settings.angle_y = config.angle_y;
@@ -290,7 +294,29 @@ void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene(new pcl::PointCloud<pcl::PointXYZRGB>);
 	copyPointCloud(*cloud_scene, *scene);
 
-	process_scene(scene, depth_bgr.clone(), grayscale.clone());
+	if (orientation == 1) {	
+		cv::Mat depth_bgr_rotated(tof_image->width, tof_image->height, CV_8UC3, cv::Scalar(0, 0, 0));
+		cv::Mat grayscale_rotated(tof_image->width, tof_image->height, CV_8UC1, cv::Scalar(0));
+
+		cv::rotate(depth_bgr, depth_bgr_rotated, cv::ROTATE_90_COUNTERCLOCKWISE);
+		cv::rotate(grayscale, grayscale_rotated, cv::ROTATE_90_COUNTERCLOCKWISE);
+
+		Eigen::Matrix3f r;
+		r = 
+			  Eigen::AngleAxisf(0, Eigen::Vector3f::UnitX())
+			* Eigen::AngleAxisf(0, Eigen::Vector3f::UnitY())
+			* Eigen::AngleAxisf(-3.14159265 * 0.5, Eigen::Vector3f::UnitZ());
+
+		Eigen::Affine3f t = Eigen::Affine3f::Identity();
+		t.translation() << 0, 0, 0;
+		t.rotate(r);
+		pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene_rotated(new pcl::PointCloud<pcl::PointXYZRGB>);
+		pcl::transformPointCloud (*scene, *scene_rotated, t);
+
+		process_scene(scene_rotated, depth_bgr_rotated.clone(), grayscale_rotated.clone());
+	} else {
+		process_scene(scene, depth_bgr.clone(), grayscale.clone());
+	}
 }
 
 /**
