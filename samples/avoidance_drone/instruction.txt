@@ -1,0 +1,10 @@
+  >> sudo chmod a+rw /dev/ttyACM0
+
+  >> sudo chmod a+rxw src/vsemi_tof_cam/cfg/vsemi_tof_cam.cfg
+
+  >> catkin_make -DVSEMI_TARGET_PLATFORM=x64_ubuntu_16.04
+
+  >> sudo chmod a+rxw run.sh
+
+  >> ./run.sh
+
