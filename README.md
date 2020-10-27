@@ -1,6 +1,6 @@
 ## VSEMI TOF SDK 1.3.5
 Visionary Semiconductor Inc.
-Feb 29, 2020
+Oct 27, 2020
 
 ## Introduction
 
@@ -34,12 +34,6 @@ Point cloud with grayscale:
 
 The point cloud:
 ![Image of Sample3 = Point cloud](samples/sample3/sample_3_1.png)
-
-**[sample4](samples/sample4)**:                   work with depth map, point cloud and RGB camera in ROS environment
-
-**[sample5](samples/sample5)**:                   work with depth map, point cloud and RGB camera using OpenCV and PCL
-
-**[sample6](samples/sample6)**:                   work with depth map with OpenCV
 
 ## Developing you own application
 

@@ -1,4 +1,17 @@
 
+VSEMI TOF SDK 1.4.0
+Oct 27, 2020
+
+What's new:
+
+. Support multiple sensors.
+
+Bug fixes:
+
+. Frequency set to 1 for wide angle view.
+
+===================
+
 VSEMI TOF SDK 1.3.5
 Feb 29, 2020
 
