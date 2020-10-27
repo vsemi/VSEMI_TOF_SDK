@@ -20,8 +20,6 @@
  */
 struct Settings{
 
-	std::string port_name = "/dev/ttyACM0"; /*! USB port connects to the ToF sensor */
-
 	bool startStream;  /*! true to start ToF sensor */
 	bool runVideo;     /*! true to start ToF sensor */
 	bool updateParam;  /*! true to start ToF sensor */

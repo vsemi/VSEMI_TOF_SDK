@@ -20,6 +20,7 @@
  */
 class ToF_Camera_Driver
 {
+
 public:
 
 	/*!
@@ -30,6 +31,13 @@ public:
 	*
 	* @see Settings.
 	*/
+	ToF_Camera_Driver(
+            std::string port_name_,
+            uint  modulationFrequency_,
+            bool  autoChannelEnabled_,
+            int  channel_,
+            Settings &set_);
+
 	ToF_Camera_Driver(Settings &set_);
 
 	~ToF_Camera_Driver();
