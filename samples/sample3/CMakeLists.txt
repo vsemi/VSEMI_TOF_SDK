@@ -8,15 +8,15 @@ message("   VSEMI_TARGET_PLATFORM set to ${VSEMI_TARGET_PLATFORM}")
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
-find_package(Boost 1.55 COMPONENTS system REQUIRED)
+find_package(Boost COMPONENTS system REQUIRED)
 
-find_package(OpenCV 3.2.0 REQUIRED)
+find_package(OpenCV REQUIRED)
 
 message("OpenCV version: ${OpenCV_VERSION}")
 
 find_package (Threads)
 
-find_package(PCL 1.3 REQUIRED COMPONENTS common io visualization)
+find_package(PCL REQUIRED COMPONENTS common io visualization)
 
 file(GLOB vsemi_tof_driver_INCLUDE_DIR
     "../../driver/include"

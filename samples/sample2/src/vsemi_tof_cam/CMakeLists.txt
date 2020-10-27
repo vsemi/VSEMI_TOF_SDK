@@ -18,9 +18,9 @@ find_package(catkin REQUIRED COMPONENTS
     tf
 )
 
-find_package(Boost 1.55 REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
 
-find_package(OpenCV 3.2.0 REQUIRED)
+find_package(OpenCV REQUIRED)
 
 message("OpenCV version: ${OpenCV_VERSION}")
 
