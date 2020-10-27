@@ -1,3 +1,0 @@
-/home/vsemi/git/VSEMI_TOF_SDK/samples/sample3/build/CMakeFiles/rebuild_cache.dir
-/home/vsemi/git/VSEMI_TOF_SDK/samples/sample3/build/CMakeFiles/vsemi_tof_cam.dir
-/home/vsemi/git/VSEMI_TOF_SDK/samples/sample3/build/CMakeFiles/edit_cache.dir
