@@ -4,7 +4,6 @@
   <arg name="ns" default="vsemi_tof_cam"/>
   <arg name="nn" default="camera"/>
   <arg name="respawn" default="false"/>
-  <arg name="port_name" default="/dev/ttyACM0"/>
   <arg name="frame_rate" default="50"/>
   <arg name="stream" default="distance"/>
   <arg name="integrationTimeTOF1"  default="2000"/>
@@ -33,7 +32,6 @@
           respawn="$(arg respawn)">
 
       <param name="stream" value="$(arg stream)"/>
-      <param name="port_name" value="$(arg port_name)"/>
       <param name="frame_rate" value="$(arg frame_rate)"/>
       <param name="integrationTimeTOF1" value="$(arg integrationTimeTOF1)"/>
       <param name="integrationTimeTOF2" value="$(arg integrationTimeTOF2)"/>

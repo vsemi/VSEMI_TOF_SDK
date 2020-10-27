@@ -163,7 +163,6 @@ void updateConfig(vsemi_tof_cam::vsemi_tof_camConfig &config, uint32_t level)
 void initialise()
 {
 	ros::NodeHandle nh("~");
-	nh.param("port_name", settings.port_name, std::string("/dev/ttyACM0"));
 	nh.param("frame_rate", settings.frameRate, 50.0);
 
 	cloud_scene_publisher     = nh.advertise<sensor_msgs::PointCloud2>("cloud_scene", 1);
