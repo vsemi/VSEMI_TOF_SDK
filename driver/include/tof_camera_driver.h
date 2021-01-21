@@ -49,6 +49,12 @@ public:
 	*/
 	bool initCommunication();
 
+	unsigned int getFirmwareMajor();
+	unsigned int getFirmwareMinor();
+
+	uint16_t getChipID();
+	uint16_t getWaferID();
+
 	/*!
 	* @brief Request update to the ToF sensor.
 	* Either sending new settings parameters, or request new frame,
@@ -85,6 +91,10 @@ public:
 
 private:
 	ToF_Camera* tof_camera;
+
+	unsigned int minor, major;
+	uint16_t chipID, waferID;
+
 	void tof_image_received(std::shared_ptr<ToF_Image> tof_image);
 };
 

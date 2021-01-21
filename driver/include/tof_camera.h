@@ -27,6 +27,12 @@ public:
     */
     virtual bool initCommunication() = 0;
 
+	virtual unsigned int getFirmwareMajor() = 0;
+	virtual unsigned int getFirmwareMinor() = 0;
+
+	virtual uint16_t getChipID() = 0;
+	virtual uint16_t getWaferID() = 0;
+
     /*!
     * @brief Request update to the sensor hardware, either sending new settings parameters, or request new frame.
     */
