@@ -1,0 +1,40 @@
+Sample 6, to work with OpenCV to show depth map with minimum dependencies, no PCL required and no point cloud visualization.
+
+Prerequisites:
+
+  Jetson TX2
+  Jetpack 3.2
+  cmake 3.5 +
+  boost 1.55 +
+  
+Before you start
+
+  If you already have dependencies for any one of Sample1 or Sample2 or Sample3 installed, go to the section of "Build and run sample application", otherwise install dependencies refer to Sample_1_Quick_start_raw_data_minimum_dependency.txt.
+  
+Build and run sample application
+
+1. Plug in the sensor, and set USB permission:
+
+  >> sudo chmod a+rw /dev/ttyACM0
+
+2. Extract VSEMI_TOF_SDK.zip into /home directory, there should be: ~/VSEMI_TOF_SDK
+
+3. Build sample desktop application:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample6
+
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=jetson_jetpack_3.0
+
+  >> make
+
+4. To start the sample desktop application, run command:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample6/build
+
+  >> ./vsemi_tof_cam
+
+5. To stop the application, press Esc key when the depth map window active, or use mouse to close the point cloud window.
+
+

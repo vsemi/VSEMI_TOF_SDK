@@ -1,0 +1,42 @@
+The sample 1, a quick start, to work with raw data which requires minimum dependencies, does not have visualization features, 
+you can observe the raw distance data obtained from the ToF sensor printing from the terminal only.
+
+Prerequisites:
+
+  Jetson TX2
+  Jetpack 3.2
+  cmake 3.5 +
+  boost 1.55 +
+
+Install dependencies
+
+  >> sudo apt install cmake
+
+  >> sudo apt install libboost-all-dev
+
+Build and run sample application:
+
+1. Plug in the sensor, and set USB permission:
+
+  >> sudo chmod a+rw /dev/ttyACM0
+
+2. Extract VSEMI_TOF_SDK archive file into /home directory, there should be: ~/VSEMI_TOF_SDK
+
+3. Build sample desktop application:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample1
+
+  >> mkdir build && cd build
+
+  >> cmake .. -DVSEMI_TARGET_PLATFORM=jetson_jetpack_3.0
+
+  >> make
+
+4. To start the sample min application, run command:
+
+  >> cd ~/VSEMI_TOF_SDK/samples/sample1/build
+  
+  >> ./vsemi_tof_cam
+
+5. To stop the application, press Ctr + C.
+

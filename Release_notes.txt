@@ -1,4 +1,13 @@
 
+VSEMI TOF SDK 1.3.6
+Jan 21, 2021
+
+What's new:
+
+. Added API to get sensor chip ID and firmware version
+
+===================
+
 VSEMI TOF SDK 1.4.0
 Oct 27, 2020
 
