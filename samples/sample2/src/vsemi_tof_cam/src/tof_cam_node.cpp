@@ -235,14 +235,14 @@ void process_scene(pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene, cv::Mat depth_b
 
 	// skip empty cloud
 	if ((! scene_clean->empty()) && scene_clean->points.size() > 0) {
-
+/*
 		pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene_filtered(new pcl::PointCloud<pcl::PointXYZRGB>);
 		pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> sor;
 		sor.setInputCloud(scene_clean);
 		sor.setMeanK(30);
 		sor.setStddevMulThresh(1.0);
 		sor.filter(*scene_filtered);
-		
+*/
 		// scene transform if you know the camera pose
 		//Eigen::Matrix3f rotation_matrix3f;
 		//rotation_matrix3f = 
@@ -255,7 +255,7 @@ void process_scene(pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene, cv::Mat depth_b
 		//transform_affine3f.rotate(rotation_matrix3f);
 		//pcl::transformPointCloud (*scene_filtered, *scene_filtered, transform_affine3f);
 
-		publish_cloud(cloud_scene_publisher, scene_filtered, curTime);
+		publish_cloud(cloud_scene_publisher, scene_clean, curTime);
 
 		cvtColor(grayscale, grayscale, cv::COLOR_GRAY2BGR);
 
@@ -344,6 +344,15 @@ int main(int argc, char **argv)
 	{
 		return 1;
 	}
+
+	unsigned int major = tof_camera_driver.getFirmwareMajor();
+	unsigned int minor = tof_camera_driver.getFirmwareMinor();
+
+	uint16_t chipID = tof_camera_driver.getChipID();
+	uint16_t waferID = tof_camera_driver.getWaferID();
+
+	std::cerr << "Firmware: " << major << "." << minor << std::endl;
+	std::cerr << "Chip: " << waferID << "." << chipID << std::endl;
 
 	/**
 	* Connect signal to obtain ToF_Imagem which contains data include raw distance data array, colored depth data array and 3D points data array.
