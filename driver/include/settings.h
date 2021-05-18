@@ -28,6 +28,8 @@ struct Settings{
 
 	uint  mode;        /*! 0 for wide FOV, and 1 for narrow beam */
 
+	uint image_type;   /*! 0 for distance only, and 1 for distance and grayscale, 2 for distance and amplitude */
+
 	uint  hdr;         /*! 0 HDR off, 1 for HDR spatial and 2 for HDR temporal */
 
 	bool automaticIntegrationTime; /*! true for auto integration time, false to turn off auto integration time */
@@ -58,8 +60,8 @@ struct Settings{
 
 	bool ignoreSaturatedPoints; /*! true to ignore saturated points coursed by strong reflection or too big integration time */
 
-	double angle_x      = 50.0f;  /*! horizontal angle of the FOV, modify this to calibrate horizontal angle of the FOV */
-	double angle_y      = 18.75f; /*! vertical angle of the FOV, modify this to calibrate vertical angle of the FOV */
+	double angle_x      = 55.0f;  /*! horizontal angle of the FOV, modify this to calibrate horizontal angle of the FOV */
+	double angle_y      = 20.625f; /*! vertical angle of the FOV, modify this to calibrate vertical angle of the FOV */
 
 	uint pointCloudColor = 0; /*! point cloud color scheme, 0 - distance pseudo color, 1 - grayscale */
 

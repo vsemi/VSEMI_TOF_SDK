@@ -42,6 +42,15 @@ struct ToF_Image
 	uint8_t*   data_grayscale;
 
 	/*!
+	* @brief Pointer of an arry float[n_points], amplitude data.
+	*
+	* Example of reinterpreting to Opencv Mat:
+	*
+	* Mat amplitude_mat = Mat(tof_image->height, tof_image->width, CV_32F, tof_image->data_amplitude);
+	*/
+	float*   data_amplitude;
+
+	/*!
 	* @brief Pointer of an arry float[n_points * 8], 3D points in XYZRGB format:
 	* float x
 	* float y
@@ -113,6 +122,7 @@ struct ToF_Image
 		data_2d_bgr         = new uint8_t[n_points * 3];
 		saturated_mask      = new uint8_t[n_points];
 		data_grayscale      = new uint8_t[n_points];
+		data_amplitude      = new float[n_points];
 	}
 };
 
