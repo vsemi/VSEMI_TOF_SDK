@@ -78,8 +78,6 @@
 
 #include <pcl/visualization/pcl_visualizer.h>
 
-
-
 #include <vsemi_tof_cam/vsemi_tof_camConfig.h>
 
 #include "tof_camera_driver.h"
@@ -95,12 +93,11 @@ static string package_path = "";
 static ros::Publisher cloud_scene_publisher;
 static ros::Publisher image_depth_Publisher;
 static ros::Publisher image_grayscale_Publisher;
+static ros::Publisher image_amplitude_Publisher;
 
 static Settings settings;
 
 static std::string strFrameID = "sensor_frame"; 
-
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_scene(new pcl::PointCloud<pcl::PointXYZRGB>);
 
 static bool process_busy = false;
 
@@ -112,6 +109,8 @@ void updateConfig(vsemi_tof_cam::vsemi_tof_camConfig &config, uint32_t level)
 
 	settings.hdr = static_cast<uint>(config.hdr);
 	settings.mode = static_cast<uint>(config.mode);
+	
+	settings.image_type = static_cast<uint>(config.image_type);
 
 	settings.frameRate = config.frame_rate;
 
@@ -165,6 +164,7 @@ void initialise()
 	cloud_scene_publisher     = nh.advertise<sensor_msgs::PointCloud2>("cloud_scene", 1);
 	image_depth_Publisher     = nh.advertise<sensor_msgs::Image>("image_depth", 1);
 	image_grayscale_Publisher = nh.advertise<sensor_msgs::Image>("image_grayscale", 1);
+	image_amplitude_Publisher = nh.advertise<sensor_msgs::Image>("image_amplitude", 1);
 
 	settings.runVideo = false;
 	settings.updateParam = false;
@@ -220,7 +220,7 @@ void publish_image(ros::Publisher publisher, cv::Mat image, ros::Time time) {
 /**
 * to process the 3D scene
 */
-void process_scene(pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene, cv::Mat depth_bgr, cv::Mat grayscale) {
+void process_scene(pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene, cv::Mat depth_bgr, cv::Mat grayscale, cv::Mat amplitude) {
 
 	if (process_busy) return;
 
@@ -258,9 +258,12 @@ void process_scene(pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene, cv::Mat depth_b
 		publish_cloud(cloud_scene_publisher, scene_clean, curTime);
 
 		cvtColor(grayscale, grayscale, cv::COLOR_GRAY2BGR);
+		amplitude.convertTo(amplitude, CV_8UC1);
+		cvtColor(amplitude, amplitude, cv::COLOR_GRAY2BGR);
 
 		publish_image(image_depth_Publisher, depth_bgr, curTime);
 		publish_image(image_grayscale_Publisher, grayscale, curTime);
+		publish_image(image_amplitude_Publisher, amplitude, curTime);
 
 	}
 
@@ -274,7 +277,7 @@ void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
 {
 	if (process_busy) return;
 
-	cloud_scene->points.clear();
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_scene(new pcl::PointCloud<pcl::PointXYZRGB>);
 
 	pcl::PointXYZRGB* data_ptr = reinterpret_cast<pcl::PointXYZRGB*>(tof_image->data_3d_xyz_rgb);
 	std::vector<pcl::PointXYZRGB> pts(data_ptr, data_ptr + tof_image->n_points);
@@ -283,21 +286,21 @@ void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
 
 	cv::Mat depth_bgr(tof_image->height, tof_image->width, CV_8UC3, tof_image->data_2d_bgr);
 	cv::Mat grayscale(tof_image->height, tof_image->width, CV_8UC1, tof_image->data_grayscale);
+	cv::Mat amplitude(tof_image->height, tof_image->width, CV_32F, tof_image->data_amplitude);
 
 	cloud_scene->resize(tof_image->n_points);
 	cloud_scene->width = tof_image->n_points;
 	cloud_scene->height = 1;
 	cloud_scene->is_dense = false;
 
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene(new pcl::PointCloud<pcl::PointXYZRGB>);
-	copyPointCloud(*cloud_scene, *scene);
-
 	if (orientation == 1) {	
 		cv::Mat depth_bgr_rotated(tof_image->width, tof_image->height, CV_8UC3, cv::Scalar(0, 0, 0));
 		cv::Mat grayscale_rotated(tof_image->width, tof_image->height, CV_8UC1, cv::Scalar(0));
+		cv::Mat amplitude_rotated(tof_image->width, tof_image->height, CV_32F, 0.0);
 
 		cv::rotate(depth_bgr, depth_bgr_rotated, cv::ROTATE_90_COUNTERCLOCKWISE);
 		cv::rotate(grayscale, grayscale_rotated, cv::ROTATE_90_COUNTERCLOCKWISE);
+		cv::rotate(amplitude, amplitude_rotated, cv::ROTATE_90_COUNTERCLOCKWISE);
 
 		Eigen::Matrix3f r;
 		r = 
@@ -309,11 +312,11 @@ void tof_image_received(std::shared_ptr<ToF_Image> tof_image)
 		t.translation() << 0, 0, 0;
 		t.rotate(r);
 		pcl::PointCloud<pcl::PointXYZRGB>::Ptr scene_rotated(new pcl::PointCloud<pcl::PointXYZRGB>);
-		pcl::transformPointCloud (*scene, *scene_rotated, t);
+		pcl::transformPointCloud (*cloud_scene, *scene_rotated, t);
 
-		process_scene(scene_rotated, depth_bgr_rotated.clone(), grayscale_rotated.clone());
+		process_scene(scene_rotated, depth_bgr_rotated.clone(), grayscale_rotated.clone(), amplitude_rotated.clone());
 	} else {
-		process_scene(scene, depth_bgr.clone(), grayscale.clone());
+		process_scene(cloud_scene, depth_bgr.clone(), grayscale.clone(), amplitude.clone());
 	}
 }
 
